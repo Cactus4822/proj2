@@ -8,7 +8,7 @@
 #endif //ASSIGNMENT2_TWITTER_CREATE_H
 
 #define TWEET_LENGTH 270
-#define USR_LENGHT 100
+#define USR_LENGTH 100
 #define MAX_FOLLOWERS 30
 #define MAX_FOLLOWING 30
 #define MAX_TWEETS 100
@@ -17,12 +17,12 @@
 typedef struct tweet{
     int id;
     char msg[TWEET_LENGTH];
-    char user[USR_LENGHT];
+    char user[USR_LENGTH];
 
 }tweet;
 
 typedef struct user{
-    char username[USR_LENGHT];
+    char username[USR_LENGTH];
     char followers[MAX_FOLLOWERS];
     int num_followers;
     char following[MAX_FOLLOWING];
