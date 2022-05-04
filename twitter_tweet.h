@@ -6,3 +6,7 @@
 #define PROJ2_TWITTER_TWEET_H
 
 #endif //PROJ2_TWITTER_TWEET_H
+
+#include "twitter_create.h"
+
+void postTweet(tweet * twt);

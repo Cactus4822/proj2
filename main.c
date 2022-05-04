@@ -1,12 +1,13 @@
-#include "twitter_create.h"
+//#include "twitter_create.h"
 #include "twitter_follow.h"
 #include "twitter_tweet.h"
 
 void helpfunc(); // Function to print list of commands
 int validcheck(char opt[10]); // Function to check validity of command and keep functions in an array (Check As5)
-
+tweet twt;
+twitter twitter_system;
 int main() {
-    twitter twitter_system;
+
     create_twitter_system(&twitter_system);
     //printf("\n%d users in t_s.n_u\n", twitter_system.num_users);
 
@@ -42,6 +43,7 @@ int main() {
             printf("Entered command: %s.\n", opt);
             if(strcmp(opt, tweet) == 0){
                 printf("[Tweet]\n");
+                postTweet(&twt);
             }
             else if(strcmp(opt, follow) == 0){
                 printf("[Follow]\n");
@@ -84,6 +86,8 @@ void helpfunc(){
     printf("/endturn to end your turn and move to the next user\n");
     printf("/end to terminate the program\n");
     printf("/help to show this message again.\n\n");
+    printf("%d", twt.id);
+    printf("%d", twitter_system.num_tweets);
 }
 
 int validcheck(char opt[10]){

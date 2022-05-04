@@ -3,12 +3,13 @@
 //
 
 #include "twitter_tweet.h"
-#include "twitter_create.h"
 
 void postTweet(tweet * twt);
 
 void postTweet(tweet * twt){
-    printf("What's happening?");
+    twitter * twtr;
+    printf("What's happening?\n");
     fgets(twt->msg, TWEET_LENGTH, stdin);
     twt->id++;
+    //twtr->num_tweets++;
 }
