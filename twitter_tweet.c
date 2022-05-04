@@ -5,8 +5,10 @@
 #include "twitter_tweet.h"
 #include "twitter_create.h"
 
-void postTweet(char x);
+void postTweet(tweet * twt);
 
-void postTweet(char x){
-    printf("Tweet")
+void postTweet(tweet * twt){
+    printf("What's happening?");
+    fgets(twt->msg, TWEET_LENGTH, stdin);
+    twt->id++;
 }
