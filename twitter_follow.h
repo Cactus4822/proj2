@@ -6,3 +6,5 @@
 #define PROJ2_TWITTER_FOLLOW_H
 
 #endif //PROJ2_TWITTER_FOLLOW_H
+
+void follow()
