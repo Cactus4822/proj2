@@ -1,6 +1,5 @@
-//#include "twitter_create.h"
-#include "twitter_follow.h"
-#include "twitter_tweet.h"
+#include "twitter_functions.h"
+
 
 void helpfunc(); // Function to print list of commands
 int validcheck(char opt[10]); // Function to check validity of command and keep functions in an array (Check As5)

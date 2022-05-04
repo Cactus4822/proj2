@@ -1,8 +1,5 @@
-//
-// Created by ninja on 5/4/2022.
-//
 
-#include "twitter_tweet.h"
+#include "twitter_functions.h"
 
 void postTweet(tweet * twt);
 
@@ -12,4 +9,9 @@ void postTweet(tweet * twt){
     fgets(twt->msg, TWEET_LENGTH, stdin);
     twt->id++;
     //twtr->num_tweets++;
+}
+
+void follow();
+
+void follow(){
 }
