@@ -42,8 +42,8 @@ void create_twitter_system(twitter * twitter_system){
     users[0].num_following = 0;
      */
     fgets(twitter_system->users[0].username, USR_LENGTH, stdin);
-    if (twitter_system->users[0].username[strlen(twitter_system->users[0].username) -1] == "\n")
-        twitter_system->users[0].username[strlen(twitter_system->users[0].username) -1] = "\0";
+    if (twitter_system->users[0].username[strlen(twitter_system->users[0].username) -1] == '\n')
+        twitter_system->users[0].username[strlen(twitter_system->users[0].username) -1] = '\0';
     twitter_system->users[0].num_followers = 0;
     twitter_system->users[0].num_following = 0;
 
@@ -57,8 +57,8 @@ void create_twitter_system(twitter * twitter_system){
         users[i].num_following = 0;
          */
         fgets(twitter_system->users[i].username, USR_LENGTH, stdin);
-        if (twitter_system->users[i].username[strlen(twitter_system->users[i].username) -1] == "\n")
-            twitter_system->users[i].username[strlen(twitter_system->users[i].username) -1] = "\0";
+        if (twitter_system->users[i].username[strlen(twitter_system->users[i].username) -1] == '\n')
+            twitter_system->users[i].username[strlen(twitter_system->users[i].username) -1] = '\0';
         twitter_system->users[i].num_followers = 0;
         twitter_system->users[i].num_following = 0;
     }
