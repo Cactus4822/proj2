@@ -14,11 +14,13 @@ int main() {
     user usr; // Declares usr variable to be used down below
     char opt[10]; // User option
     // Strings to compare to check user command
-    char feed[10] = "/feed";
+    char feed[10] = "/newsfeed";
     char follow[10] = "/follow";
+    char unfollow[10] = "/unfollow";
     char tweet[10] = "/tweet";
+    char delete[10] = "/delete";
     char help[10] = "/help";
-    char pass[10] = "/pass";
+    char endturn[10] = "/endturn";
     char end[10] = "/end";
 
     while(turn != -1){ // While loop to encapsulate user rotations until program is terminated
@@ -39,21 +41,27 @@ int main() {
                 opt[strlen(opt) -1] = '\0';
             }
             printf("Entered command: %s.\n", opt);
-            if(strcmp(opt, feed) == 0){
-                printf("[Feed]\n");
+            if(strcmp(opt, tweet) == 0){
+                printf("[Tweet]\n");
             }
             else if(strcmp(opt, follow) == 0){
                 printf("[Follow]\n");
             }
-            else if(strcmp(opt, tweet) == 0){
-                printf("[Tweet]\n");
+            else if(strcmp(opt, unfollow) == 0){
+                printf("[Unfollow]\n");
+            }
+            else if(strcmp(opt, feed) == 0){
+                printf("[Feed]\n");
+            }
+            else if(strcmp(opt, delete) == 0){
+                printf("[Delete]\n");
             }
             else if(strcmp(opt, help) == 0){
                 printf("[Help]\n");
                 helpfunc();
             }
-            else if(strcmp(opt, pass) == 0){
-                printf("[Pass]\n");
+            else if(strcmp(opt, endturn) == 0){
+                printf("[Turn ended]\n");
                 next = 1;
             }
             else if(strcmp(opt, end) == 0){
@@ -73,10 +81,12 @@ int main() {
 }
 
 void helpfunc(){
-    printf("/feed to show user feed\n");
-    printf("/follow to follow/unfollow\n");
-    printf("/tweet to post a tweet\n\n");
-    printf("/pass to pass control\n");
+    printf("/tweet to post a tweet\n");
+    printf("/newsfeed to show user feed\n");
+    printf("/follow to follow\n");
+    printf("/unfollow to unfollow\n");
+    printf("/delete to delete your account\n");
+    printf("/endturn to end your turn and move to the next user\n");
     printf("/end to terminate the program\n");
     printf("/help to show this message again.\n\n");
 }
