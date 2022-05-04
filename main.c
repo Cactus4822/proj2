@@ -2,16 +2,15 @@
 
 
 void helpfunc(); // Function to print list of commands
-int validcheck(char opt[10]); // Function to check validity of command and keep functions in an array (Check As5)
 tweet twt;
 twitter twitter_system;
+user usr; // Declares usr variable to be used down below
 int main() {
 
     create_twitter_system(&twitter_system);
     //printf("\n%d users in t_s.n_u\n", twitter_system.num_users);
 
     int turn=0, i, next=0; // "turn" to check whose turn it is, "i" just iterator, "next" to check if next user turn
-    user usr; // Declares usr variable to be used down below
     char opt[10]; // User option
     // Strings to compare to check user command
     char newsfeed[12] = "/newsfeed";
@@ -87,8 +86,4 @@ void helpfunc(){
     printf("/help to show this message again.\n\n");
     printf("%d", twt.id);
     printf("%d", twitter_system.num_tweets);
-}
-
-int validcheck(char opt[10]){
-    return 0;
 }
