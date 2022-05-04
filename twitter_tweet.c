@@ -3,3 +3,10 @@
 //
 
 #include "twitter_tweet.h"
+#include "twitter_create.h"
+
+void postTweet(char x);
+
+void postTweet(char x){
+    printf("Tweet")
+}

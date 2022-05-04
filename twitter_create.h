@@ -2,6 +2,9 @@
 // Created by Lili on 30/03/2022.
 //
 
+#include <stdio.h>
+#include <string.h>
+
 #ifndef ASSIGNMENT2_TWITTER_CREATE_H
 #define ASSIGNMENT2_TWITTER_CREATE_H
 
