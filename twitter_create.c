@@ -63,8 +63,4 @@ void create_twitter_system(twitter * twitter_system){
         twitter_system->users[i].num_following = 0;
     }
 
-    for (int i=0;i<twitter_system->num_users;i++){
-        printf("%s ", twitter_system->users[i]);
-    }
-
 }
