@@ -14,7 +14,7 @@ int main() {
     user usr; // Declares usr variable to be used down below
     char opt[10]; // User option
     // Strings to compare to check user command
-    char feed[10] = "/newsfeed";
+    char newsfeed[12] = "/newsfeed";
     char follow[10] = "/follow";
     char tweet[10] = "/tweet";
     char delete[10] = "/delete";
@@ -35,7 +35,7 @@ int main() {
         next = 0;
         while(next == 0){ // Allows user to continue entering commands until they pass control or end the program
             printf("Select an operation:\n");
-            fgets(opt, 10, stdin);
+            fgets(opt, 12, stdin);
             if(opt[strlen(opt) -1] == '\n'){
                 opt[strlen(opt) -1] = '\0';
             }
@@ -46,8 +46,8 @@ int main() {
             else if(strcmp(opt, follow) == 0){
                 printf("[Follow]\n");
             }
-            else if(strcmp(opt, feed) == 0){
-                printf("[Feed]\n");
+            else if(strcmp(opt, newsfeed) == 0){
+                printf("[Newsfeed]\n");
             }
             else if(strcmp(opt, delete) == 0){
                 printf("[Delete]\n");
