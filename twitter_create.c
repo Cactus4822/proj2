@@ -33,6 +33,10 @@ void create_twitter_system(twitter * twitter_system){
     user users[num_users]; // For creating user structs
     tweet news_feed[MAX_TWEETS];
 
+    printf("Username of first user: \n");
+    fgets(users[0].username, USR_LENGTH, stdin);
+    users[0].num_followers = 0;
+    users[0].num_following = 0;
 
     for (int i=1;i<num_users;i++){
         printf("\nUsername of next user: ");
