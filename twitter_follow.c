@@ -3,3 +3,7 @@
 //
 
 #include "twitter_follow.h"
+
+void follow(){
+
+}

@@ -7,4 +7,4 @@
 
 #endif //PROJ2_TWITTER_FOLLOW_H
 
-void follow()
+void follow();
