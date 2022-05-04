@@ -16,7 +16,7 @@ void create_twitter_system(twitter * twitter_system){
     twitter_system->firstTweet = NULL;
     twitter_system->lastTweet = NULL;
 
-    int num_users; // Number of users ygm
+    int orig=0; // Original username
 
     printf("Enter number of users: \n"); // Gets number of users
     scanf("%d", &twitter_system->num_users);
@@ -59,6 +59,22 @@ void create_twitter_system(twitter * twitter_system){
         fgets(twitter_system->users[i].username, USR_LENGTH, stdin);
         if (twitter_system->users[i].username[strlen(twitter_system->users[i].username) -1] == '\n')
             twitter_system->users[i].username[strlen(twitter_system->users[i].username) -1] = '\0';
+        orig = 0;
+        while(orig == 0){
+            orig = 1;
+            for (int j=0;j<i;j++){
+                if(strcasecmp(twitter_system->users[j].username, twitter_system->users[i].username) == 0){
+                    orig = 0;
+                }
+            }
+            if(orig == 0){
+                printf("Username taken. Please try a different username.\n");
+                fgets(twitter_system->users[i].username, USR_LENGTH, stdin);
+                if (twitter_system->users[i].username[strlen(twitter_system->users[i].username) -1] == '\n')
+                    twitter_system->users[i].username[strlen(twitter_system->users[i].username) -1] = '\0';
+            }
+        }
+
         twitter_system->users[i].num_followers = 0;
         twitter_system->users[i].num_following = 0;
     }
