@@ -23,6 +23,7 @@ void create_twitter_system(twitter * twitter_system){
 
     printf("Enter number of users: \n"); // Gets number of users
     scanf("%d", &num_users);
+    getchar();
     while (num_users < 1){ // Makes sure there's at least one user
         printf("Error: Need at least 1 user.\n");
         printf("Enter number of users: \n");
@@ -33,7 +34,7 @@ void create_twitter_system(twitter * twitter_system){
     user users[num_users]; // For creating user structs
     tweet news_feed[MAX_TWEETS];
 
-    printf("Username of first user: \n");
+    printf("Username of first user: ");
     fgets(users[0].username, USR_LENGTH, stdin);
     users[0].num_followers = 0;
     users[0].num_following = 0;
