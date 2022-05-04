@@ -1,4 +1,4 @@
-//
+//.,
 // Created by Lili on 30/03/2022.
 //
 
@@ -18,7 +18,7 @@ typedef struct tweet{
     int id;
     char msg[TWEET_LENGTH];
     char user[USR_LENGTH];
-
+    struct tweet *nextTweet;
 }tweet;
 
 typedef struct user{
@@ -27,6 +27,7 @@ typedef struct user{
     int num_followers;
     char following[MAX_FOLLOWING];
     int num_following;
+    struct user *nextUser;
 }user;
 
 typedef struct twitter{
@@ -34,6 +35,10 @@ typedef struct twitter{
     user users[MAX_USERS];
     int num_tweets;
     int num_users;
+    tweet *firstTweet;
+    tweet *lastTweet;
+    user *firstUser;
+    user *lastUser;
 } twitter;
 
 void create_twitter_system(twitter * twitter_system);
