@@ -16,7 +16,6 @@ int main() {
     // Strings to compare to check user command
     char feed[10] = "/newsfeed";
     char follow[10] = "/follow";
-    char unfollow[10] = "/unfollow";
     char tweet[10] = "/tweet";
     char delete[10] = "/delete";
     char help[10] = "/help";
@@ -46,9 +45,6 @@ int main() {
             }
             else if(strcmp(opt, follow) == 0){
                 printf("[Follow]\n");
-            }
-            else if(strcmp(opt, unfollow) == 0){
-                printf("[Unfollow]\n");
             }
             else if(strcmp(opt, feed) == 0){
                 printf("[Feed]\n");
@@ -83,8 +79,7 @@ int main() {
 void helpfunc(){
     printf("/tweet to post a tweet\n");
     printf("/newsfeed to show user feed\n");
-    printf("/follow to follow\n");
-    printf("/unfollow to unfollow\n");
+    printf("/follow to follow/unfollow a user\n");
     printf("/delete to delete your account\n");
     printf("/endturn to end your turn and move to the next user\n");
     printf("/end to terminate the program\n");
