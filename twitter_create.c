@@ -29,16 +29,16 @@ void create_twitter_system(twitter * twitter_system){
     }
     printf("%d users.\n", num_users); // Just to double-check
 
-    user *users; // For creating user structs
+    user users[num_users]; // Users Array
     tweet news_feed[MAX_TWEETS];
 
-    printf("Username of first user: ");
+    printf("Username of first user:");
     fgets(users[0].username, USR_LENGTH, stdin);
     users[0].num_followers = 0;
     users[0].num_following = 0;
 
     for (int i=1;i<num_users;i++){
-        printf("\nUsername of next user: ");
+        printf("\nUsername of next user:");
         fgets(users[i].username, USR_LENGTH, stdin);
         users[i].num_followers = 0;
         users[i].num_following = 0;
