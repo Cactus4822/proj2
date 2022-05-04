@@ -24,6 +24,7 @@ void create_twitter_system(twitter * twitter_system){
     printf("Enter number of users: \n"); // Gets number of users
     scanf("%d", &num_users);
     getchar();
+    twitter_system->num_users = num_users;
     while (num_users < 1){ // Makes sure there's at least one user
         printf("Error: Need at least 1 user.\n");
         printf("Enter number of users: \n");
@@ -38,14 +39,12 @@ void create_twitter_system(twitter * twitter_system){
     fgets(users[0].username, USR_LENGTH, stdin);
     users[0].num_followers = 0;
     users[0].num_following = 0;
-    twitter_system->num_users = 1;
 
     for (int i=1;i<num_users;i++){
         printf("\nUsername of next user: ");
         fgets(users[i].username, USR_LENGTH, stdin);
         users[i].num_followers = 0;
         users[i].num_following = 0;
-        twitter_system->num_users++;
     }
 
 }
