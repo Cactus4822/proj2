@@ -3,4 +3,4 @@ project(proj2 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(proj2 main.c twitter_create.c twitter_create.h)
+add_executable(proj2 main.c twitter_create.c twitter_create.h twitter_follow.c twitter_follow.h twitter_tweet.c twitter_tweet.h)

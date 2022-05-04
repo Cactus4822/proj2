@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "twitter_create.h"
+#include "twitter_follow.h"
+#include "twitter_tweet.h"
 
 int main() {
     twitter twitter_system;
