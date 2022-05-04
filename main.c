@@ -10,6 +10,7 @@ int main() {
 
     int turn=0, i;
     user usr = twitter_system.users[i];
+    char follow[7] = "/follow";
 
     for(i=0; i < twitter_system.num_users; i++){
         printf("User: %s; Followers: %d; Following: %d\n",usr.username, usr.num_followers, usr.num_followers);
