@@ -42,7 +42,7 @@ void postTweet( twitter * twtr){
 
 int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfollow Users
     int valid = 0; // Checks validity of entered command
-    int j=0, k=0; // Holds pos of user in twitter_system->users[]
+    int j=0, k=0; // Holds pos of user in twitter_system->users[], k counter
     char opt[10]; // User option
     char target[USR_LENGTH]; // Target is the user they want to "interact" with
     // Strings to compare against user command
@@ -94,28 +94,26 @@ int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfol
         else if(strcmp(opt, follow) == 0){
             printf("[Follow user]\n");
             valid = 1;
-            for(int i=0;i<twitter_system->users[j].num_following;i++) {
-                if (strcmp(&twitter_system->users[j].following[i], target) == 0) {
+            for(int i=0;i<twitter_system->users[j].num_following;i++){
+                if (strcmp(&twitter_system->users[j].following[i], target) == 0){
                     printf("You are already following %s.\n", target);
                     valid = 0;
                 }
             }
             if(valid == 1){
-                valid = 0;
-                //printf("Looking for %s...\n", target);
-                for(int i=0;i<twitter_system->num_users;i++) {
-                    //printf("We see %s.\n", twitter_system->users[i].username);
-                    if (strcmp(twitter_system->users[i].username, target) == 0) {
-                        strcpy(&twitter_system->users[j].following[twitter_system->users[j].num_following], target);
-                        //printf("put at pos %d\n", usr->num_following);
-                        twitter_system->users[j].num_following++;
-                        strcpy(&twitter_system->users[i].followers[twitter_system->users[i].num_followers++], twitter_system->users[j].username);
-                        printf("You are now following %s.\n", target);
-                        valid = 1;
-                    }
+                k=0;
+                while(((strcmp(twitter_system->users[k].username, target)) != 0) && (k < twitter_system->num_users)){
+                    k++;
                 }
-                if(valid == 0){
+                printf("k is %d, num users is %d\n", k, twitter_system->num_users);
+                if(k+1>twitter_system->num_users){
                     printf("There is no user named %s.\n", target);
+                }
+                else{
+                    printf("twitter_system->users[k].username is confirmed %s\n", twitter_system->users[k].username);
+                    strcpy(&twitter_system->users[j].following[twitter_system->users[j].num_following++], twitter_system->users[k].username); // User is following
+                    strcpy(&twitter_system->users[k].followers[twitter_system->users[k].num_following++], twitter_system->users[j].username); // Adds user as follower
+                    printf("You are now following %s\n", twitter_system->users[k].username);
                 }
                 valid = 0;
             }
