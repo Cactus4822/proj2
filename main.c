@@ -24,13 +24,14 @@ int main() {
     while(turn != -1){ // While loop to encapsulate user rotations until program is terminated
         for(i=0; i < twitter_system.num_users; i++){ // Iterates and prints all users
             usr = twitter_system.users[i];
-            printf("User: %s; Followers: %d; Following: %d\n",usr.username, usr.num_followers, usr.num_followers);
+            printf("User: %s; Followers: %d; Following: %d\n",usr.username, usr.num_followers, usr.num_following);
         }
         if(turn > twitter_system.num_users-1)
             turn = 0;
         usr = twitter_system.users[turn]; // Person in control
         printf("\n%s is in control.\nSelect an operation:\n", usr.username);
         helpfunc(); // Function to display commands
+
         next = 0;
         while(next == 0){ // Allows user to continue entering commands until they pass control or end the program
             printf("Select an operation:\n");
