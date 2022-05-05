@@ -43,7 +43,7 @@ int main() {
             printf("Entered command: %s.\n", opt);
             if(strcmp(opt, tweet) == 0){
                 printf("[Tweet]\n");
-                postTweet(&twitter_system);
+                postTweet(&twitter_system, &twt);
             }
             else if(strcmp(opt, follow) == 0){
                 printf("[Follow]\n");

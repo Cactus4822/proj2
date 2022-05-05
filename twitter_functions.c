@@ -5,12 +5,12 @@
 
 int id = 0;
 
-void postTweet( twitter * twtr){
+void postTweet( twitter * twtr, tweet * link){
     if( twtr->num_tweets > MAX_TWEETS){
         printf("You have reached the max Tweet limit.\n");
         return;
     }
-    tweet *link = (struct tweet*) malloc(sizeof(struct tweet));
+    //tweet * link;
     printf("What's happening?\n");
     fgets(link->msg, TWEET_LENGTH, stdin);
     if (strchr(link->msg, '\n') == NULL) {
