@@ -43,7 +43,7 @@ int main() {
             printf("Entered command: %s.\n", opt);
             if(strcmp(opt, tweet) == 0){
                 printf("[Tweet]\n");
-                postTweet(&twitter_system, &twt);
+                postTweet(&twitter_system, &twt, &usr);
             }
             else if(strcmp(opt, follow) == 0){
                 printf("[Follow]\n");
@@ -107,6 +107,6 @@ void helpfunc(){
     printf("/endturn to end your turn and move to the next user\n");
     printf("/end to terminate the program\n");
     printf("/help to show this message again.\n\n");
-    //printf("%d", twt.id);
-    //printf("%d", twitter_system.num_tweets);
+    printf("%d", twt.id);
+    printf("%d", twitter_system.num_tweets);
 }
