@@ -186,3 +186,7 @@ int deleteFunc(user *usr, twitter * twitter_system, tweet * tp) {
     }
     return 0;
 }
+
+void newsfeed(twitter * twtr, tweet * link, user * usr) {
+
+}
