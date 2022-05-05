@@ -151,31 +151,15 @@ int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfol
     }
 }
 
-int deleteacc(twitter * twitter_system) {
-    char usernamedel[USR_LENGTH];
-    printf("Type in your username to confirm you want to delete your account:");
-    fgets(usernamedel, USR_LENGTH, stdin);
-    user *current = twitter_system->firstUser;
-    user *previous = NULL;
-
-    if (twitter_system->firstUser == NULL) {
-        return NULL;
+int deleteFunc(user *usr, twitter * twitter_system, tweet * tp) {
+    int j=0;
+    while(strcmp(twitter_system->users[j].username, usr->username) != 0){ // Finds pos of user (for tracking)
+        j++;
     }
+    printf("\nGoodbye, %s.\n\n", twitter_system->users[j].username);
+    printf("%d tweet(s) total.\n", twitter_system->num_tweets);
+    printf("tp id is %d", &tp->id);
 
-    while (current->username != usernamedel) {
-        if (current->nextUser == NULL) {
-            return NULL;
-        } else {
-            previous = current;
-            current = current->nextUser;
-        }
-    }
-
-    if(current == twitter_system->firstUser) {
-        twitter_system->firstUser = twitter_system->firstUser->nextUser;
-    } else {
-        previous->nextUser = current->nextUser;
-    }
-    return current;
+    twitter_system->num_users--;
+    return 0;
 }
-

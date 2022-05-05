@@ -15,4 +15,4 @@ int followFunc(user *usr, twitter * twitter_system);
 
 //void printList(twitter * twtr);
 
-int deleteacc(twitter * twitter_system);
+int deleteFunc(user *usr, twitter * twitter_system, tweet * tweetr);

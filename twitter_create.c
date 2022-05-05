@@ -34,7 +34,7 @@ void create_twitter_system(twitter * twitter_system){
         printf("Enter number of users: \n");
         scanf("%d", &twitter_system->num_users);
     }
-    printf("%d users.\n", twitter_system->num_users); // Just to double-check
+    //printf("%d users.\n", twitter_system->num_users); // Just to double-check
 
     //user users[twitter_system->num_users]; // Users Array
     twitter_system->users[twitter_system->num_users];
