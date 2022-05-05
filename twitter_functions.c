@@ -5,17 +5,21 @@
 
 int id = 0;
 
-void postTweet( twitter * twtr, tweet * link,  user * usr){
+void postTweet( twitter * twtr, tweet * link, user * usr){
     if( twtr->num_tweets > MAX_TWEETS){
         printf("You have reached the max Tweet limit.\n");
         return;
     }
     //tweet * link;
     printf("What's happening?\n");
+    int pass = 0;
+    while (pass != 1) {
     fgets(link->msg, TWEET_LENGTH, stdin);
     if (strchr(link->msg, '\n') == NULL) {
         printf("Error: Your tweet is too long. Please try again:\n");
         fflush(stdin);
+    } else {
+        pass = 1;}
     }
     link->id = twtr->tweets_created;
     link->nextTweet = NULL;
@@ -27,6 +31,7 @@ void postTweet( twitter * twtr, tweet * link,  user * usr){
     }
     twtr->num_tweets++;
     twtr->tweets_created++;
+    strcpy(link->user, usr->username);
 }
 /*void printList(twitter * twtr) {
     tweet *ptr = twtr->firstTweet;
