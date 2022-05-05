@@ -22,6 +22,7 @@ int main() {
     char end[10] = "/end";
 
     while(turn != -1){ // While loop to encapsulate user rotations until program is terminated
+        printf("\n%d human(s) using Twitter.\n", twitter_system.num_users);
         for(i=0; i < twitter_system.num_users; i++){ // Iterates and prints all users
             usr = twitter_system.users[i];
             printf("User: %s; Followers: %d; Following: %d\n",usr.username, usr.num_followers, usr.num_following);
@@ -34,7 +35,7 @@ int main() {
 
         next = 0;
         while(next == 0){ // Allows user to continue entering commands until they pass control or end the program
-            printf("Select an operation:\n");
+            printf("Select an operation (/help for help):\n");
             fgets(opt, 12, stdin);
             if(opt[strlen(opt) -1] == '\n'){
                 opt[strlen(opt) -1] = '\0';
@@ -56,7 +57,23 @@ int main() {
                 printf("[Newsfeed]\n");
             }
             else if(strcmp(opt, delete) == 0){
-                int delete(twitter * twtr, char usernamedel[USR_LENGTH]);
+                printf("Are you sure you want to delete your account?\n");
+                printf("Note: This is irreversible. Please enter 'Confirm' to confirm.\n");
+                fgets(opt, 12, stdin);
+                if(opt[strlen(opt) -1] == '\n'){
+                    opt[strlen(opt) -1] = '\0';
+                }
+                if(strcasecmp(opt, "confirm") == 0){
+                    deleteFunc(&usr, &twitter_system, &twt);
+                    if(twitter_system.num_users < 1){
+                        printf("There are no more users.\nShutting down twitter...\n");
+                        turn = -2;
+                    }
+                    next = 1;
+                }
+                else{
+                    printf("Delete canceled.\n");
+                }
             }
             else if(strcmp(opt, help) == 0){
                 printf("[Help]\n");
