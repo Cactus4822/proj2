@@ -11,7 +11,7 @@
 
 void postTweet(twitter * twtr);
 
-int followFunc(user * usr, twitter * twitter_system);
+int followFunc(user *usr, twitter * twitter_system);
 
 //void printList(twitter * twtr);
 
