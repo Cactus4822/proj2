@@ -5,7 +5,7 @@
 
 int id = 0;
 
-void postTweet( twitter * twtr, tweet * link){
+void postTweet( twitter * twtr, tweet * link,  user * usr){
     if( twtr->num_tweets > MAX_TWEETS){
         printf("You have reached the max Tweet limit.\n");
         return;
