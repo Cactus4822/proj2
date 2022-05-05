@@ -22,11 +22,12 @@ int main() {
     char end[10] = "/end";
 
     while(turn != -1){ // While loop to encapsulate user rotations until program is terminated
-        printf("\n%d human(s) using Twitter.\n", twitter_system.num_users);
+        printf("\n%d human(s) using Twitter.\n\n", twitter_system.num_users);
         for(i=0; i < twitter_system.num_users; i++){ // Iterates and prints all users
             usr = twitter_system.users[i];
             printf("User: %s; Followers: %d; Following: %d\n",usr.username, usr.num_followers, usr.num_following);
         }
+        printf("\n%d tweet(s) posted.\n", twitter_system.num_tweets);
         if(turn > twitter_system.num_users-1)
             turn = 0;
         usr = twitter_system.users[turn]; // Person in control

@@ -172,12 +172,29 @@ int deleteFunc(user *usr, twitter * twitter_system, tweet * tp) {
     }
     printf("\nGoodbye, %s.\n\n", twitter_system->users[j].username);
     printf("%d tweet(s) total.\n", twitter_system->num_tweets);
-    tweet *p = twitter_system->firstTweet;
-    printf("p: %d.\n", p);
-    printf("%d %s.\n", p->id, p->msg);
+    if (twitter_system->firstTweet == NULL){
+        printf("yupnull\n");
+        tweet *p = twitter_system->firstTweet;
+        printf("p: %d.\n", p);
+        printf("%d %s.\n", p->id, p->msg);
+    }
+    else{
+        printf("nah\n");
+        tweet *p = twitter_system->firstTweet;
+        printf("p: %d.\n", p);
+        printf("%d %s.\n", p->id, p->msg);
+    }
+
+
+    for(int i=0;i<twitter_system->num_users;i++){
+        printf("uh\n");
+        printf("twitter_system->users[%d].num_following is %s.\n", i, twitter_system->users[i].num_following);
+        for(int k=0;k<twitter_system->users[i].num_following;k++){
+            printf("%s.following[k] is %s.\n", twitter_system->users[i], twitter_system->users[i].following[k]);
+        }
+    }
 
     if(j+1 == twitter_system->num_users){
-
         twitter_system->num_users--;
     }
     else{
