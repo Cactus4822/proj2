@@ -3,20 +3,19 @@
 
 
 
-void postTweet( twitter * twtr, tweet * link, user * usr){
+int id = 0;
+
+void postTweet( twitter * twtr, tweet * link){
     if( twtr->num_tweets > MAX_TWEETS){
         printf("You have reached the max Tweet limit.\n");
         return;
     }
+    //tweet * link;
     printf("What's happening?\n");
-    int pass = 0;
-    while (pass != 1) {
     fgets(link->msg, TWEET_LENGTH, stdin);
     if (strchr(link->msg, '\n') == NULL) {
         printf("Error: Your tweet is too long. Please try again:\n");
         fflush(stdin);
-    } else {
-    pass = 1;}
     }
     link->id = twtr->tweets_created;
     link->nextTweet = NULL;
@@ -28,9 +27,8 @@ void postTweet( twitter * twtr, tweet * link, user * usr){
     }
     twtr->num_tweets++;
     twtr->tweets_created++;
-    strcpy(link->user, usr->username);
 }
-void printList(twitter * twtr) {
+/*void printList(twitter * twtr) {
     tweet *ptr = twtr->firstTweet;
     printf("\n[ ");
     //start from the beginning
@@ -40,7 +38,7 @@ void printList(twitter * twtr) {
     }
 
     printf(" ]");
-}
+}*/
 
 int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfollow Users
     int valid = 0; // Checks validity of entered command
