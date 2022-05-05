@@ -9,7 +9,7 @@
 
 #include "twitter_create.h"
 
-void postTweet(twitter * twtr, tweet * link);
+void postTweet(twitter * twtr, tweet * link, user * usr);
 
 int followFunc(user *usr, twitter * twitter_system);
 
