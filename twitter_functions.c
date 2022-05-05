@@ -42,7 +42,7 @@ void postTweet( twitter * twtr, tweet * link,  user * usr){
 
 int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfollow Users
     int valid = 0; // Checks validity of entered command
-    int j=0, k=0; // Holds pos of user in twitter_system->users[], k counter
+    int j=0, k=0, l=0; // Holds pos of user in twitter_system->users[], k and l counters
     char opt[10]; // User option
     char target[USR_LENGTH]; // Target is the user they want to "interact" with
     // Strings to compare against user command
@@ -88,11 +88,10 @@ int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfol
         scanf("%s %s", &opt, &target);
         printf("opt is %s. target is %s.\n", opt, target);
 
-        if(strcasecmp(target, twitter_system->users[j].username) == 0){
+        if(strcasecmp(target, twitter_system->users[j].username) == 0){ // If user targets self
             printf("You cannot target yourself.\n");
         }
         else if(strcmp(opt, follow) == 0){ // Following a user
-            //printf("[Follow user]\n");
             valid = 1;
             for(int i=0;i<twitter_system->users[j].num_following;i++){ // Checks if they're already followed
                 if (strcasecmp(twitter_system->users[j].following[i], target) == 0){
@@ -100,19 +99,17 @@ int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfol
                     valid = 0;
                 }
             }
-            if(valid == 1){
+            if(valid == 1){ // If they're already following the target, this is all skipped
                 k=0;
                 while(((strcasecmp(twitter_system->users[k].username, target)) != 0) && (k < twitter_system->num_users)){
-                    k++; // Finds the position of the user they want to follow
+                    k++; // Finds the position of the user they want to follow on the twitter_system->users[] array
                 }
-                //printf("k is %d, num users is %d\n", k, twitter_system->num_users);
                 if(k+1>twitter_system->num_users){ // If the user isn't found
                     printf("There is no user named %s.\n", target);
                 }
                 else{ // Follow the user and become one of their followers
-                    //printf("twitter_system->users[k].username is confirmed %s\n", twitter_system->users[k].username);
-                    strcpy(twitter_system->users[j].following[twitter_system->users[j].num_following++], twitter_system->users[k].username); // User is following
-                    strcpy(twitter_system->users[k].followers[twitter_system->users[k].num_followers++], twitter_system->users[j].username); // Adds user as follower
+                    strcpy(twitter_system->users[j].following[twitter_system->users[j].num_following++], twitter_system->users[k].username); // User is now following target
+                    strcpy(twitter_system->users[k].followers[twitter_system->users[k].num_followers++], twitter_system->users[j].username); // Adds user as follower to target
                     printf("You are now following %s\n", twitter_system->users[k].username);
                 }
                 valid = 0;
@@ -124,19 +121,31 @@ int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfol
             while((strcasecmp(twitter_system->users[j].following[k], target) != 0) && k < twitter_system->users[j].num_following){
                 k++; // Makes sure you're following the user you're trying to unfollow
             }
-            //printf("k is %d\ntwitter_system->users[j].num_following is %d\n", k, twitter_system->users[j].num_following);
+            // Target is not on user's following list
             if(k+1>twitter_system->users[j].num_following){
                 printf("You are not following %s.", target);
                 valid = 0;
             }
+            // Target is on user's following list
             if(valid == 1){
-                if(k+1 == twitter_system->users[j].num_following){ //If they're at the end of the list anyway, decrementing the num_followers effectively removes it
+                // Removes user from target's followers list
+                while(strcmp(twitter_system->users[j].username, twitter_system->users[k].followers[l]) != 0){ // Finds pos of current user on target's followers list
+                    l++;
+                }
+                if(l+1 == twitter_system->users[k].num_followers){ // If user is at end of target's followers list
+                    twitter_system->users[k].num_followers--; // Decrement target's follower number and user is gone. If new follower gets added, they'll replace the old follower (user)
+                }
+                else{
+                    strcpy(twitter_system->users[k].followers[l], twitter_system->users[k].followers[twitter_system->users[k].num_followers -1]);
+                    twitter_system->users[k].num_following--; // Decrement target's follower number and user is gone. If new follower gets added, they'll replace the old follower (user)
+                }
+                // Removes target from user's following list
+                if(k+1 == twitter_system->users[j].num_following){ // If the target is at the end of the user's following list
                     twitter_system->users[j].num_following--;
                     printf("%s unfollowed.\n", target);
                 }
                 else{ // Replaces the followed user with the last followed user and decrements number of following by one, effectively removing it.
-                    //printf("twitter_system->users[j].following[k] is %s.\n", &twitter_system->users[j].following[k]);
-                    //printf("twitter_system->users[j].following[twitter_system->users[j].num_following -1] is %s.\n", twitter_system->users[j].following[twitter_system->users[j].num_following -1]);
+
                     strcpy(twitter_system->users[j].following[k], twitter_system->users[j].following[twitter_system->users[j].num_following -1]);
                     //printf("twitter_system->users[j].following[k] is now %s.\n", &twitter_system->users[j].following[k]);
                     twitter_system->users[j].num_following--;
@@ -163,6 +172,7 @@ int deleteFunc(user *usr, twitter * twitter_system, tweet * tp) {
     printf("%d %s.\n", p->id, p->msg);
 
     if(j+1 == twitter_system->num_users){
+
         twitter_system->num_users--;
     }
     else{
