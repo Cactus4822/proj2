@@ -112,7 +112,7 @@ int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfol
                 else{
                     printf("twitter_system->users[k].username is confirmed %s\n", twitter_system->users[k].username);
                     strcpy(&twitter_system->users[j].following[twitter_system->users[j].num_following++], twitter_system->users[k].username); // User is following
-                    strcpy(&twitter_system->users[k].followers[twitter_system->users[k].num_following++], twitter_system->users[j].username); // Adds user as follower
+                    strcpy(&twitter_system->users[k].followers[twitter_system->users[k].num_followers++], twitter_system->users[j].username); // Adds user as follower
                     printf("You are now following %s\n", twitter_system->users[k].username);
                 }
                 valid = 0;
