@@ -2,12 +2,10 @@
 #include "twitter_functions.h"
 
 
-tweet *head = NULL;
-tweet *current = NULL;
+
 int id = 0;
 
 void postTweet( twitter * twtr){
-
     if( twtr->num_tweets > MAX_TWEETS){
         printf("You have reached the max Tweet limit.\n");
         return;
@@ -42,7 +40,7 @@ void postTweet( twitter * twtr){
     printf(" ]");
 }*/
 
-int followFunc(user usr, twitter * twitter_system){
+int followFunc(user * usr, twitter * twitter_system){
     int valid = 0;
     char opt[10];
     char target[USR_LENGTH];
@@ -51,18 +49,16 @@ int followFunc(user usr, twitter * twitter_system){
     char unfollow[10] = "/unfollow";
     char leave[10] = "/leave";
 
-    printf("Hello %s!\n\n", usr.username);
+    printf("Hello %s!\n\n", usr->username);
     printf("Your Stats\n--------\n");
-    printf("%d following\n", usr.num_following);
-    for(int i=0;i<usr.num_following;i++){
-        printf("%s; ", usr.following[i]);
+    printf("%d following\n", usr->num_following);
+    for(int i=0;i<usr->num_following;i++){
+        printf("%s; ", usr->following[i]);
     }
-    printf("%d followers\n", usr.num_followers);
-    for(int i=0;i<usr.num_followers;i++){
-        printf("%s; ", usr.followers[i]);
+    printf("%d followers\n", usr->num_followers);
+    for(int i=0;i<usr->num_followers;i++){
+        printf("%s; ", usr->followers[i]);
     }
-
-
     while(valid == 0){
         printf("What would you like to do?\n");
         printf("/edit to manage followers and following,\n/leave to return to the main menu.\n");
@@ -78,14 +74,14 @@ int followFunc(user usr, twitter * twitter_system){
         scanf("%s %s", &opt, &target);
         printf("opt is %s. target is %s.\n", opt, target);
 
-        if(strcmp(target, usr.username) == 0){
+        if(strcmp(target, usr->username) == 0){
             printf("You cannot target yourself.\n");
         }
         else if(strcmp(opt, follow) == 0){
             printf("[Follow user]\n");
             valid = 1;
-            for(int i=0;i<usr.num_following;i++) {
-                if (strcmp(&usr.following[i], target) == 0) {
+            for(int i=0;i<usr->num_following;i++) {
+                if (strcmp(&usr->following[i], target) == 0) {
                     printf("You are already following %s.\n", target);
                     valid = 0;
                 }
@@ -96,8 +92,8 @@ int followFunc(user usr, twitter * twitter_system){
                 for(int i=0;i<twitter_system->num_users;i++) {
                     //printf("We see %s.\n", twitter_system->users[i].username);
                     if (strcmp(twitter_system->users[i].username, target) == 0) {
-                        strcpy(&usr.following[usr.num_following], target);
-                        usr.num_following++;
+                        strcpy(&usr->following[usr->num_following], target);
+                        usr->num_following++;
                         printf("You are now following %s.\n", target);
                         valid = 1;
                     }
@@ -110,8 +106,8 @@ int followFunc(user usr, twitter * twitter_system){
         else if(strcmp(opt, unfollow) == 0){
             printf("[Unfollow user]");
             valid = 1;
-            for(int i=0;i<usr.num_following;i++) {
-                if (strcmp(&usr.following[i], target) == 0) {
+            for(int i=0;i<usr->num_following;i++) {
+                if (strcmp(&usr->following[i], target) == 0) {
                     printf("You are already following %s.\n", target);
                     valid = 0;
                 }
@@ -119,8 +115,8 @@ int followFunc(user usr, twitter * twitter_system){
             if(valid == 1){
                 for(int i=0;i<twitter_system->num_users;i++){
                     if(strcmp(twitter_system->users[i].username, target) == 0){
-                        strcpy(&usr.following[usr.num_following], target);
-                        usr.num_following++;
+                        strcpy(&usr->following[usr->num_following], target);
+                        usr->num_following++;
                         printf("You are now following %s.\n", target);
                     }
                     else{
@@ -135,4 +131,31 @@ int followFunc(user usr, twitter * twitter_system){
             scanf("%s %s", &opt, &target);
         }
     }
+}
+
+int delete(twitter * twtr, char usernamedel[USR_LENGTH]) {
+    printf("Type in your username to confirm you want to delete your account:");
+    fgets(usernamedel, USR_LENGTH, stdin);
+    user *current = twtr->firstUser;
+    user *previous = NULL;
+
+    if (twtr->firstUser == NULL) {
+        return NULL;
+    }
+
+    while (current->username != usernamedel) {
+        if (current->nextUser == NULL) {
+            return NULL;
+        } else {
+            previous = current;
+            current = current->nextUser;
+        }
+    }
+
+    if(current == twtr->firstUser) {
+        twtr->firstUser = twtr->firstUser->nextUser;
+    } else {
+        previous->nextUser = current->nextUser;
+    }
+    return current;
 }

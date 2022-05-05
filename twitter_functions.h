@@ -11,6 +11,8 @@
 
 void postTweet(twitter * twtr);
 
-void follow();
+int followFunc(user * usr, twitter * twitter_system);
 
 //void printList(twitter * twtr);
+
+int delete(twitter * twtr, char usernamedel[USR_LENGTH]);
