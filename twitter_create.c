@@ -8,6 +8,13 @@
 
 void create_twitter_system(twitter * twitter_system){
 
+    twitter_system->tweets_created = 0;
+
+
+
+
+
+
     twitter_system->num_users = 0;
     twitter_system->firstUser = NULL;
     twitter_system->lastUser = NULL;

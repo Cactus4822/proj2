@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #ifndef ASSIGNMENT2_TWITTER_CREATE_H
 #define ASSIGNMENT2_TWITTER_CREATE_H
@@ -37,6 +38,7 @@ typedef struct twitter{
     tweet news_feed[MAX_TWEETS];
     user users[MAX_USERS];
     int num_tweets;
+    int tweets_created;
     int num_users;
     tweet *firstTweet;
     tweet *lastTweet;

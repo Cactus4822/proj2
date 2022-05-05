@@ -9,6 +9,8 @@
 
 #include "twitter_create.h"
 
-void postTweet(tweet * twt);
+void postTweet(twitter * twtr);
 
 void follow();
+
+//void printList(twitter * twtr);
