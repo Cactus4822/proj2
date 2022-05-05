@@ -158,7 +158,10 @@ int deleteFunc(user *usr, twitter * twitter_system, tweet * tp) {
     }
     printf("\nGoodbye, %s.\n\n", twitter_system->users[j].username);
     printf("%d tweet(s) total.\n", twitter_system->num_tweets);
-    printf("tp id is %d", &tp->id);
+    printf("tp id is %d.\n", &tp->id);
+    printf("tp msg is %s.\n", &tp->msg);
+    printf("lastweet: %s.\n", twitter_system->lastTweet);
+
 
     twitter_system->num_users--;
     return 0;
