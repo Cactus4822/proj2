@@ -45,6 +45,11 @@ int main() {
             }
             else if(strcmp(opt, follow) == 0){
                 printf("[Follow]\n");
+                followFunc(&usr, &twitter_system);
+                fgets(opt, 12, stdin);
+                if(opt[strlen(opt) -1] == '\n'){
+                    opt[strlen(opt) -1] = '\0';
+                }
             }
             else if(strcmp(opt, newsfeed) == 0){
                 printf("[Newsfeed]\n");
