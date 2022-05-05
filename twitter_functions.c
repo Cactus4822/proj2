@@ -151,13 +151,14 @@ int followFunc(user *usr, twitter * twitter_system){ // Function to Follow/Unfol
     }
 }
 
-int delete(twitter * twtr, char usernamedel[USR_LENGTH]) {
+int deleteacc(twitter * twitter_system) {
+    char usernamedel[USR_LENGTH];
     printf("Type in your username to confirm you want to delete your account:");
     fgets(usernamedel, USR_LENGTH, stdin);
-    user *current = twtr->firstUser;
+    user *current = twitter_system->firstUser;
     user *previous = NULL;
 
-    if (twtr->firstUser == NULL) {
+    if (twitter_system->firstUser == NULL) {
         return NULL;
     }
 
@@ -170,10 +171,11 @@ int delete(twitter * twtr, char usernamedel[USR_LENGTH]) {
         }
     }
 
-    if(current == twtr->firstUser) {
-        twtr->firstUser = twtr->firstUser->nextUser;
+    if(current == twitter_system->firstUser) {
+        twitter_system->firstUser = twitter_system->firstUser->nextUser;
     } else {
         previous->nextUser = current->nextUser;
     }
     return current;
 }
+

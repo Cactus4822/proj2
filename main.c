@@ -56,7 +56,7 @@ int main() {
                 printf("[Newsfeed]\n");
             }
             else if(strcmp(opt, delete) == 0){
-                int delete(twitter * twtr, char usernamedel[USR_LENGTH]);
+                deleteacc(&twitter_system);
             }
             else if(strcmp(opt, help) == 0){
                 printf("[Help]\n");
