@@ -55,7 +55,12 @@ int main() {
                 }
             }
             else if(strcmp(opt, newsfeed) == 0){
-                printf("[Newsfeed]\n");
+                if(twitter_system.num_users == 0) {
+                    printf("There are no tweets\n");
+                } else {
+                    struct tweet *t = twitter_system.firstTweet;
+                    newsFeed(&twitter_system, t, &usr, 1);
+                }
             }
             else if(strcmp(opt, delete) == 0){
                 printf("Are you sure you want to delete your account?\n");

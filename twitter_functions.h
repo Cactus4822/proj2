@@ -16,3 +16,5 @@ int followFunc(user *usr, twitter * twitter_system);
 //void printList(twitter * twtr);
 
 int deleteFunc(user *usr, twitter * twitter_system, tweet * tweetr);
+
+void newsFeed(twitter * twtr, tweet * link, user * usr, int index);

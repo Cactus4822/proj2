@@ -21,8 +21,11 @@ void postTweet( twitter * twtr, tweet * link, user * usr){
     } else {
         pass = 1;}
     }
+
+    strcpy(link->user, usr->username);
     link->id = twtr->tweets_created;
     link->nextTweet = NULL;
+
     if (twtr->num_tweets != 0) {
         twtr->lastTweet->nextTweet = link;
         twtr->lastTweet = link;
@@ -31,7 +34,6 @@ void postTweet( twitter * twtr, tweet * link, user * usr){
     }
     twtr->num_tweets++;
     twtr->tweets_created++;
-    strcpy(link->user, usr->username);
 }
 /*void printList(twitter * twtr) {
     tweet *ptr = twtr->firstTweet;
@@ -203,6 +205,37 @@ int deleteFunc(user *usr, twitter * twitter_system, tweet * tp) {
     return 0;
 }
 
-void newsfeed(twitter * twtr, tweet * link, user * usr) {
+void newsFeed(twitter * twtr, tweet * link, user * usr, int index) {
 
+    if (index == 1) {
+        link = twtr->firstTweet;
+    }
+
+    if (link == NULL || index == 10) {
+        printf("End of feed\n");
+        return;
+    } else {
+        int found = 0;
+
+        for (int i = 0; i < MAX_FOLLOWING; i++) {
+            if (strcmp(link->user, usr->following[i]) == 0) {
+                found = 1;
+                break;
+            }
+        }
+        if (found == 1 || strcmp(usr->username, link->user) == 0) {
+            printf("By: %s\nTweet: %s\n", link->user, link->msg);
+            index++;
+        }
+        newsFeed(twtr, link->nextTweet, usr, index);
+    }
+}
+
+int isFollowing(user *usr, char usrB[]) {
+    for (int i = 0; i < MAX_FOLLOWING; i++) {
+        if(strcmp(usrB, usr->following[i]) == 0) {
+            return 1;
+        }
+    }
+    return 0;
 }
