@@ -71,6 +71,7 @@ int main() {
                         turn = -2;
                     }
                     next = 1;
+                    turn--;
                 }
                 else{
                     printf("Delete canceled.\n");
