@@ -7,7 +7,7 @@ twitter twitter_system;
 user usr; // Declares usr variable to be used down below
 int main() {
 
-    create_twitter_system(&twitter_system);
+    create_twitter_system(&twitter_system); // Creates Twitter
     //printf("\n%d users in t_s.n_u\n", twitter_system.num_users);
 
     int turn=0, i, next=0; // "turn" to check whose turn it is, "i" just iterator, "next" to check if next user turn
@@ -22,21 +22,20 @@ int main() {
     char end[10] = "/end";
 
     while(turn != -1){ // While loop to encapsulate user rotations until program is terminated
-        printf("\n%d human(s) using Twitter.\n\n", twitter_system.num_users);
+        printf("\n%d human(s) using Twitter.\n\n", twitter_system.num_users); // Tracks number of users
         for(i=0; i < twitter_system.num_users; i++){ // Iterates and prints all users
             usr = twitter_system.users[i];
             printf("User: %s; Followers: %d; Following: %d\n",usr.username, usr.num_followers, usr.num_following);
         }
-        printf("\n%d tweet(s) posted.\n", twitter_system.num_tweets);
-        if(turn > twitter_system.num_users-1)
+        printf("\n%d tweet(s) posted.\n", twitter_system.num_tweets); // Tracks number of tweets
+        if(turn > twitter_system.num_users-1) // resets control back to first user after last user's turn
             turn = 0;
         usr = twitter_system.users[turn]; // Person in control
-        printf("\n%s is in control.\nSelect an operation:\n", usr.username);
         helpfunc(); // Function to display commands
 
         next = 0;
         while(next == 0){ // Allows user to continue entering commands until they pass control or end the program
-            printf("Select an operation (/help for help):\n");
+            printf("\n%s is in control.\nSelect an operation:\n", usr.username);
             fgets(opt, 12, stdin);
             if(opt[strlen(opt) -1] == '\n'){
                 opt[strlen(opt) -1] = '\0';
