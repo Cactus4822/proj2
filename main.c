@@ -67,7 +67,7 @@ int main() {
                 if(strcasecmp(opt, "confirm") == 0){
                     deleteFunc(&usr, &twitter_system, &twt);
                     if(twitter_system.num_users < 1){
-                        printf("There are no more users.\nShutting down twitter...\n");
+                        printf("There are no more users.\nShutting down Twitter...\n");
                         turn = -2;
                     }
                     next = 1;
